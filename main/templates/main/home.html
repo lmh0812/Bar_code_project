@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+</head>
+<body>
+    <h1>상품목록</h1>
+    <!--<tr>
+        <th>코드</th><th>상품</th><th>단가</th>
+        <th>변경</th>
+    </tr> -->
+    {% if code_list %}
+    <ul>
+        {% for codes in code_list %}
+            <h1><a href="{% url 'main:post_detail' codes.id %}">{{ codes.name }}</a></h1>
+            <p>바코드 : {{ codes.code }}</p>
+            <p>가격 : {{ codes.charge }}</p>
+            <br>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>자료가 없습니다.</p>
+    {% endif %}
+    <a href="{% url 'main:add' %}">바코드로 상품추가</a><br>
+    <a href="{% url 'main:img_add' %}">이미지로 상품추가</a>
+</body>
+</html>

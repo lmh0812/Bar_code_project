@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function chkData() {
+    //alert("aa");
+    if(frm.code.value == "" ||
+        frm.name.value == "" ||
+        frm.volume.value == "" ||
+        frm.charge.value == ""){
+        alert("입력자료를 모두 채우시오");
+        return;
+    }
+    frm.submit();
+}
+
+</script>
+</head>
+<body>
+<!-- <h2>자료 입력</h2>
+<form name="frm" action="/main/product" method="post">{% csrf_token%}
+<table border="1">
+    <tr><td>코드 : </td><td><input type="text" name="code"></td></tr>
+    <tr><td>품명 : </td><td><input type="text" name="sang"></td></tr>
+    <tr><td>수량 : </td><td><input type="text" name="su"></td></tr>
+    <tr><td>단가 : </td><td><input type="text" name="dan"></td></tr>
+    <tr>
+     <td colspan="2" style="text-align:center;">
+     <input type="button" value="저장" onclick="chkData()">
+     </td>
+    </tr>
+</table>
+</form> -->
+<h1>{{ code.code_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form name = "frm" action="{% url 'main:add' %}" method="post"> <!--submit을 눌렀을 때 해당 url로 넘어감-->
+{% csrf_token %} <!--해킹 방지-->
+
+    <!-- <input type="radiot" name="add" id="add{{ forloop.counter }}" value="{{ add.id }}"> submit을 누르면 value값이 넘어감 -->
+    <!-- <label for="add{{ forloop.counter }}">{{ choice.choice_text }}</label><br> -->
+    <input type="text" name="add_code" value="{{ add.code }}">
+    <input type="text" name="add_name">
+    <input type="text" name="add_charge">
+
+<input type="submit" value="저장" onclick="chkData()">
+</form>
+</body>
+</html>

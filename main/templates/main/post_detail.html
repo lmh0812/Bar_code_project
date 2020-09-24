@@ -1,0 +1,14 @@
+{% block content %}
+    {% if post.id %}
+
+        <p>바코드 : {{ post.code }}</p>
+
+    {% endif %}
+    <br>
+    <h1>상품명 : {{ post.name }}</h1>
+    <p>가격 : {{ post.charge }}</p>
+    <a href="{% url 'main:post_edit' post.id %}">상품수정</a>
+    <div class="delete">
+        <p><a href="{% url 'main:post_delete' post.id %}">삭제</a></p>  
+    </div>
+{% endblock %}

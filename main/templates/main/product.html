@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>* 상품 목록 *</h2>
+<a href="/main/insert">상품 추가</a>
+<table border="1">
+<tr>
+    <th>id</th><th>코드</th><th>상품</th><th>수량</th><th>단가</th>
+    <th>변경</th>
+</tr>
+{% if sangpums %}
+{% for s in sangpums %}
+<tr>
+    <td>{{s.id}}</td>
+    <td>{{s.code}}</td>
+    <td>{{s.name}}</td>
+    <td>{{s.volume}}</td>
+    <td>{{s.charge}}</td>
+    <td>
+        <a href="/sangpum/update?id={{s.id}}">수정</a> /
+        <a href="/sangpum/delete?id={{s.id}}">삭제</a>
+    </td>
+</tr>
+{% endfor %}
+{% else %}
+    <tr><td colspan="5"> 자료가 없음 </td></tr>
+{% endif %}
+</table>
+</body>
+</html>
